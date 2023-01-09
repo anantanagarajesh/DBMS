@@ -1,0 +1,110 @@
+create database hostel_database;
+use hostel_database;
+
+create table student
+(
+sid int,
+sname varchar(20),
+saddress varchar(20),
+gender varchar(4),
+nationality varchar(5),
+study varchar(20),
+primary key(sid)
+);
+
+create table residency_office
+(
+rid int,
+rname varchar(20)
+);
+
+
+create table hall
+(
+hid int,
+hname varchar(20),
+mid int,
+mname varchar(20),
+haddress varchar(20)
+);
+
+create table apartment
+(
+fno int,
+fname varchar(20),
+aadress varchar(20)
+);
+
+create table rooms
+(
+rno int,
+rplaceno int,
+primary key(rplaceno)
+);
+
+
+create table dormitory
+(
+dno int,
+dbedno int,
+dplaceno int,
+primary key(dplaceno)
+);
+
+
+create table staff
+(
+staffid int,
+staffname varchar(20),
+primary key(staffid)
+);
+
+create table invoice
+(
+iid int,
+sid int,
+sname varchar(20),
+due int,
+pdate date,
+foreign key (sid) references student(sid),
+foreign key (sname) references student (sname)
+);
+
+create table inspect
+(
+staffid int,
+hno int,
+fno int,
+foreign key (staffid) references staff(staffid),
+foreign key (hno) references hall(hno),
+foreign key (fno) references apartment (fno)
+);
+
+insert into student values(1,'Rajesh','bly','Boy','India','UG');
+insert into student values(2,'Rajesh','bly','Boy','India','UG');
+insert into student values(3,'Rajesh','bly','Boy','India','UG');
+insert into student values(4,'Rajesh','bly','Boy','India','UG');
+insert into student values(5,'Rajesh','bly','Boy','India','UG');
+insert into student values(6,'Rajesh','bly','Boy','India','UG');
+
+insert into residency_office values(123,'expert');
+
+insert into hall values (8,'Victoria',100,'ramesh');
+insert into hall values (9,'amster',101,'rakesh');
+insert into hall values (10,'nuty',102,'rameesh');
+insert into hall values (11,'elma',103,'ravish');
+
+insert into apartment values(201,'kar','kap');
+insert into apartment values(202,'kan','kap');
+insert into apartment values(203,'kas','kaf');
+insert into apartment values(204,'kad','kal');
+
+insert into staff values(300,'mallikarjun');
+insert into staff values(301,'revanth');
+insert into staff values(302,'malli');
+insert into staff values(303,'zebu');
+
+insert into rooms values(1,81);
+insert into rooms values(2,92);
+insert into rooms values(3,103);
+insert into rooms values(4,114);
